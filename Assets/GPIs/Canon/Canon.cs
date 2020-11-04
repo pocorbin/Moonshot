@@ -11,10 +11,14 @@ public class Canon : MonoBehaviour
     public Vector2 m_Direction = new Vector2(0, 0);
 
     public ParticleSystem m_MuzzleFlash;
+
+    private RandomSFXAssigner sfxAssigner;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        sfxAssigner = GetComponent<RandomSFXAssigner>();
     }
 
     // Update is called once per frame
@@ -39,5 +43,7 @@ public class Canon : MonoBehaviour
             shotPellet.transform.Rotate(0, 0, 180);
         }
         m_MuzzleFlash.Play();
+        sfxAssigner.AssignSFX();
+        audioSource.Play();
     }
 }

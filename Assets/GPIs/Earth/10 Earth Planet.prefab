@@ -696,6 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c42e414486285b47b422f240d2cec6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_KeyToPress: 274
   m_PelletPrefab: {fileID: -954211282917626357, guid: b74c85ee23026aa41aede0e9d59e690f,
     type: 3}
   m_Direction: {x: 0, y: -1}
@@ -821,9 +822,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5776129946272892058}
-  - component: {fileID: 5776129946272892061}
   - component: {fileID: 1911021645}
   - component: {fileID: 1911021644}
+  - component: {fileID: 4024363092257293554}
+  - component: {fileID: 4437535353161208219}
   m_Layer: 0
   m_Name: RightCanon
   m_TagString: Untagged
@@ -848,22 +850,6 @@ Transform:
   m_Father: {fileID: 5775756921271972728}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5776129946272892061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5776129946272892059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c42e414486285b47b422f240d2cec6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PelletPrefab: {fileID: -954211282917626357, guid: b74c85ee23026aa41aede0e9d59e690f,
-    type: 3}
-  m_Direction: {x: 1, y: 0}
-  m_MuzzleFlash: {fileID: 1412920340067642224}
 --- !u!82 &1911021645
 AudioSource:
   m_ObjectHideFlags: 0
@@ -976,6 +962,36 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f8351e9f73ff4a948b5c5b244d72d394, type: 3}
   - {fileID: 8300000, guid: 2e78cf55452bf774c99345530846ad2f, type: 3}
   m_PlayOnStart: 0
+--- !u!114 &4024363092257293554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776129946272892059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a559214fd1a76b44c9ac7a895ecdde8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_KeyToPress: 275
+  m_PelletPrefab: {fileID: -954211282917626357, guid: b74c85ee23026aa41aede0e9d59e690f,
+    type: 3}
+  m_Direction: {x: 1, y: 0}
+  m_MuzzleFlash: {fileID: 1412920340067642224}
+  secondsBeforeShotIsReady: 1.5
+--- !u!114 &4437535353161208219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776129946272892059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4700141e223c8394da354684b6de9cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5776129946544992611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c42e414486285b47b422f240d2cec6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_KeyToPress: 273
   m_PelletPrefab: {fileID: -954211282917626357, guid: b74c85ee23026aa41aede0e9d59e690f,
     type: 3}
   m_Direction: {x: 0, y: 1}
@@ -1188,6 +1205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c42e414486285b47b422f240d2cec6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_KeyToPress: 276
   m_PelletPrefab: {fileID: -954211282917626357, guid: b74c85ee23026aa41aede0e9d59e690f,
     type: 3}
   m_Direction: {x: -1, y: 0}
@@ -1446,7 +1464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TopCanon: {fileID: 5776129946544992613}
-  m_RightCanon: {fileID: 5776129946272892061}
+  m_RightCanon: {fileID: 4024363092257293554}
   m_BottomCanon: {fileID: 5776129945495504526}
   m_LeftCanon: {fileID: 5776129946816258578}
 --- !u!1001 &1250773074934162614

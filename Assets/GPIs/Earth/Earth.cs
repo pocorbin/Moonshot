@@ -17,7 +17,7 @@ public class Earth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckShoot();
+        //CheckShoot();
     }
 
     private void CheckShoot()

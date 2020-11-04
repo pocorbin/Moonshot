@@ -48,3 +48,15 @@ Thumbs.db
 *.mov
 *.wmv
 
+.vs/
+Library/
+obj/
+Temp/
+*.csproj
+*.sln
+ScarletCrisis/AssetBundles/
+.idea/
+Assets/Plugin/Editor/Jetbrains/
+.DS_Store
+
+

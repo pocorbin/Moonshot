@@ -8,7 +8,14 @@ public class ChargingCanon : Canon
     private bool hasStartedCharging = false;
     private bool isShotReady = false;
 
-    public float secondsBeforeShotIsReady = 1.5f;
+    public float secondsBeforeShotIsReady = 0.4f;
+
+
+    [Header("Effects")]
+    public ParticleSystem m_ChargingEffect;
+    public ParticleSystem m_ChargingFailedEffect;
+    public ParticleSystem m_ChargingCompleteEffect;
+    public ParticleSystem m_ChargingCompleteEffectLoop;
 
     private TimerManager timerManager;
 
@@ -16,6 +23,7 @@ public class ChargingCanon : Canon
 
     protected override void Start()
     {
+        missileSpeed = 15f;
         timerManager = GetComponent<TimerManager>();
         readyShot += ReadyShot;
         base.Start();
@@ -47,8 +55,20 @@ public class ChargingCanon : Canon
                 {
                     isShotReady = false;
                     Shoot();
+                } else
+                {
+                    FailCharge();
                 }
             }
+        }
+    }
+
+    public override void Shoot()
+    {
+        base.Shoot();
+        if(m_ChargingCompleteEffectLoop.isPlaying)
+        {
+            m_ChargingCompleteEffectLoop.Stop();
         }
     }
 
@@ -60,12 +80,21 @@ public class ChargingCanon : Canon
             Timer timer = timerManager.CreateTimer(secondsBeforeShotIsReady, readyShot);
             timer.Start();
             hasStartedCharging = true;
+            m_ChargingEffect.Play();
         }
+    }
+
+    private void FailCharge()
+    {
+        m_ChargingEffect.Stop();
+        m_ChargingFailedEffect.Play();
     }
 
     private void ReadyShot()
     {
-        Debug.Log("Shot is ready!");
         isShotReady = true;
+        m_ChargingEffect.Stop();
+        m_ChargingCompleteEffect.Play();
+        m_ChargingCompleteEffectLoop.Play();
     }
 }

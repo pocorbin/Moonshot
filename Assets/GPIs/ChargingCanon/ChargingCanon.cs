@@ -12,7 +12,7 @@ public class ChargingCanon : Canon
 
     private TimerManager timerManager;
 
-    public Action readyShot;
+    private Action readyShot;
 
     protected override void Start()
     {
@@ -63,7 +63,7 @@ public class ChargingCanon : Canon
         }
     }
 
-    public void ReadyShot()
+    private void ReadyShot()
     {
         Debug.Log("Shot is ready!");
         isShotReady = true;

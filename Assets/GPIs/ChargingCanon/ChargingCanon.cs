@@ -21,6 +21,8 @@ public class ChargingCanon : Canon
 
     private Action readyShot;
 
+    private Timer chargingTimer;
+
     protected override void Start()
     {
         missileSpeed = 15f;
@@ -77,8 +79,8 @@ public class ChargingCanon : Canon
         if(!hasStartedCharging)
         {
             timerManager.DestroyAllTimers();
-            Timer timer = timerManager.CreateTimer(secondsBeforeShotIsReady, readyShot);
-            timer.Start();
+            chargingTimer = timerManager.CreateTimer(secondsBeforeShotIsReady, readyShot);
+            chargingTimer.Start();
             hasStartedCharging = true;
             m_ChargingEffect.Play();
         }
@@ -86,7 +88,9 @@ public class ChargingCanon : Canon
 
     private void FailCharge()
     {
+        chargingTimer.Stop();
         m_ChargingEffect.Stop();
+        m_ChargingCompleteEffectLoop.Stop();
         m_ChargingFailedEffect.Play();
     }
 

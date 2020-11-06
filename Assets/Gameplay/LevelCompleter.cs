@@ -14,6 +14,8 @@ public class LevelCompleter : MonoBehaviour
     private Earth earth;
 
     private int levelsCompleted = 0;
+
+    private bool earthIsDestroyed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,11 +39,12 @@ public class LevelCompleter : MonoBehaviour
     public void InitializeLevel(int numberOfAsteroidsToTrack)
     {
         asteroidsToTrack = numberOfAsteroidsToTrack;
+        earthIsDestroyed = false;
     }
 
     private void CheckEnd()
     {
-        if(asteroidsToTrack == 0)
+        if(!earthIsDestroyed && asteroidsToTrack == 0)
         {
             levelsCompleted++;
             levelCompleteAnnouncement.ShowAnnouncement(levelsCompleted);
@@ -58,6 +61,7 @@ public class LevelCompleter : MonoBehaviour
     private void OnDestroyedEarth()
     {
         Debug.Log("Game is over");
+        earthIsDestroyed = true;
         GetRidOfAsteroids();
     }
 

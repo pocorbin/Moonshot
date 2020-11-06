@@ -9,6 +9,10 @@ public class LevelCompleter : MonoBehaviour
     private Action destroyedAsteroid;
 
     private bool levelHasBegun = false;
+
+    public LevelCompleteAnnouncement levelCompleteAnnouncement;
+
+    private int levelsCompleted = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +41,8 @@ public class LevelCompleter : MonoBehaviour
         if(levelHasBegun && asteroidsToTrack == 0)
         {
             Debug.Log("Level is ended");
+            levelsCompleted++;
+            levelCompleteAnnouncement.ShowAnnouncement(levelsCompleted);
         }
         //TODO watchout if the last destroyed asteroid also destroyed earth!
     }

@@ -48,6 +48,10 @@ public class LevelCompleter : MonoBehaviour
         {
             levelsCompleted++;
             levelCompleteAnnouncement.ShowAnnouncement(levelsCompleted);
+        } else if (earthIsDestroyed && spaceObjectsToTrack.Count == 0)
+        {
+            //Last space object has crashed into the earth
+            earth.FallOff();
         }
     }
 

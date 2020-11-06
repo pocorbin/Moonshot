@@ -6,6 +6,9 @@ using System;
 public class Earth : MonoBehaviour
 {
     public const string EARTH_TAG = "Earth";
+    private const string DESTROY_TRIGGER = "Destroy";
+    private const string FALL_OFF_TRIGGER = "FallOff";
+    private const string SPAWN_TRIGGER = "Spawn";
 
     private int maxHealth = 1;
     private int health;
@@ -14,10 +17,13 @@ public class Earth : MonoBehaviour
 
     private Action OnDestroyed;
 
+    private Animator mAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
+        mAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,11 +39,24 @@ public class Earth : MonoBehaviour
         {
             isDestroyed = true;
             OnDestroyed();
+            mAnimator.SetTrigger(DESTROY_TRIGGER);
         }
     }
 
     public void SetOnDestroyedCallback(Action pCallback)
     {
         OnDestroyed = pCallback;
+    }
+
+    public void FallOff()
+    {
+        mAnimator.SetTrigger(FALL_OFF_TRIGGER);
+    }
+
+    public void Spawn()
+    {
+        isDestroyed = false;
+        health = maxHealth;
+        mAnimator.SetTrigger(SPAWN_TRIGGER);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Moon : SpaceObject
 {
+    public LevelCompleter m_LevelCompleter;
     private AsteroidCreator asteroidCreator;
     private List<Asteroid> preparedAsteroids = new List<Asteroid>();
     protected override void Start()
@@ -21,7 +22,10 @@ public class Moon : SpaceObject
         foreach (Asteroid asteroid in preparedAsteroids)
         {
             asteroid.gameObject.SetActive(true);
+            asteroid.AddActionOnDestroyed(m_LevelCompleter.GetDestroyedAsteroidCallback());
         }
-        base.Explode();
+        m_LevelCompleter.InitializeLevel(preparedAsteroids.Count);
+        this.gameObject.SetActive(false);
+        //base.Explode();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SpaceObject : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class SpaceObject : MonoBehaviour
 
     private int currentHealth = 0;
 
+    private Action onDestroyedAction;
 
     virtual protected void Start()
     {
@@ -66,8 +68,14 @@ public class SpaceObject : MonoBehaviour
         }
     }
 
+    virtual public void AddActionOnDestroyed(Action pCallback)
+    {
+        onDestroyedAction += pCallback;
+    }
+
     virtual protected void Explode()
     {
+        onDestroyedAction();
         GameObject.Destroy(this.gameObject);
     }
 }

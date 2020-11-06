@@ -596,7 +596,7 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
       propertyPath: m_AsteroidsToSpawn
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
       propertyPath: m_MinAsteroidSpeed

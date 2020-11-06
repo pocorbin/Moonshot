@@ -9,8 +9,6 @@ public class LevelCompleter : MonoBehaviour
     private Action destroyedAsteroid;
     private Action destroyedEarth;
 
-    private bool levelHasBegun = false;
-
     public LevelCompleteAnnouncement levelCompleteAnnouncement;
 
     private Earth earth;
@@ -38,16 +36,14 @@ public class LevelCompleter : MonoBehaviour
 
     public void InitializeLevel(int numberOfAsteroidsToTrack)
     {
-        levelHasBegun = true;
         asteroidsToTrack = numberOfAsteroidsToTrack;
     }
 
     private void CheckEnd()
     {
-        if(levelHasBegun && asteroidsToTrack == 0)
+        if(asteroidsToTrack == 0)
         {
             levelsCompleted++;
-            levelHasBegun = false;
             levelCompleteAnnouncement.ShowAnnouncement(levelsCompleted);
         }
         //TODO watchout if the last destroyed asteroid also destroyed earth!
@@ -61,7 +57,6 @@ public class LevelCompleter : MonoBehaviour
 
     private void OnDestroyedEarth()
     {
-        levelHasBegun = false;
         Debug.Log("Game is over");
         GetRidOfAsteroids();
     }

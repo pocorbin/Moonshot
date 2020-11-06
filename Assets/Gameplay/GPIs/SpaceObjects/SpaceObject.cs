@@ -19,8 +19,6 @@ public class SpaceObject : MonoBehaviour
 
     private int currentHealth = 0;
 
-    private Action onDestroyedAction;
-
     virtual protected void Start()
     {
         currentHealth = m_MaxHealth;
@@ -69,15 +67,9 @@ public class SpaceObject : MonoBehaviour
         }
     }
 
-    virtual public void AddActionOnDestroyed(Action pCallback)
-    {
-        onDestroyedAction += pCallback;
-    }
-
     virtual protected void Explode()
     {
         PlayExplosionFX();
-        onDestroyedAction();
         GameObject.Destroy(this.gameObject);
     }
 

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class LevelCompleter : MonoBehaviour
 {
-    private int asteroidsToTrack = 0;
-    private Action destroyedAsteroid;
+    private List<SpaceObject> spaceObjectsToTrack = new List<SpaceObject>();
+    private Action<Asteroid> destroyedAsteroid;
     private Action destroyedEarth;
 
     public LevelCompleteAnnouncement levelCompleteAnnouncement;
@@ -31,30 +31,29 @@ public class LevelCompleter : MonoBehaviour
         
     }
     
-    public Action GetDestroyedAsteroidCallback()
+    public Action<Asteroid> GetDestroyedAsteroidCallback()
     {
         return destroyedAsteroid;
     }
 
-    public void InitializeLevel(int numberOfAsteroidsToTrack)
+    public void InitializeLevel(List<SpaceObject> pSpaceObjectsToTrack)
     {
-        asteroidsToTrack = numberOfAsteroidsToTrack;
+        spaceObjectsToTrack = pSpaceObjectsToTrack;
         earthIsDestroyed = false;
     }
 
     private void CheckEnd()
     {
-        if(!earthIsDestroyed && asteroidsToTrack == 0)
+        if(!earthIsDestroyed && spaceObjectsToTrack.Count == 0)
         {
             levelsCompleted++;
             levelCompleteAnnouncement.ShowAnnouncement(levelsCompleted);
         }
-        //TODO watchout if the last destroyed asteroid also destroyed earth!
     }
 
-    private void OnDestroyedAsteroid()
+    private void OnDestroyedAsteroid(Asteroid pDestroyedAsteroid)
     {
-        asteroidsToTrack--;
+        spaceObjectsToTrack.Remove(pDestroyedAsteroid);
         CheckEnd();
     }
 

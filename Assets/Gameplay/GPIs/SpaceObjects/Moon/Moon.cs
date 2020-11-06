@@ -41,9 +41,19 @@ public class Moon : SpaceObject
             asteroid.gameObject.SetActive(true);
             asteroid.AddActionOnDestroyed(m_LevelCompleter.GetDestroyedAsteroidCallback());
         }
-        m_LevelCompleter.InitializeLevel(preparedAsteroids.Count);
+        m_LevelCompleter.InitializeLevel(AsteroidListToSpaceObjectList(preparedAsteroids));
         mAnimator.SetTrigger(DESPAWN_TRIGGER);
         //base.Explode();
+    }
+
+    private List<SpaceObject> AsteroidListToSpaceObjectList(List<Asteroid> asteroidsToConvert)
+    {
+        List<SpaceObject> spaceObjects = new List<SpaceObject>();
+        foreach(var asteroid in asteroidsToConvert)
+        {
+            spaceObjects.Add(asteroid);
+        }
+        return spaceObjects;
     }
 
     public void Spawn()

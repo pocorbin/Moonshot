@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class Moon : SpaceObject
 {
+    private const string SPAWN_TRIGGER = "Spawn";
+    private const string DESPAWN_TRIGGER = "Despawn";
     public LevelCompleter m_LevelCompleter;
     private AsteroidCreator asteroidCreator;
     private List<Asteroid> preparedAsteroids = new List<Asteroid>();
+
+    private Animator mAnimator;
+
+    private bool isInitialized = false;
     protected override void Start()
     {
         base.Start();
         {
             base.Start();
-            asteroidCreator = GetComponent<AsteroidCreator>();
-            preparedAsteroids = asteroidCreator.PrepareAsteroids(m_RotateTarget);
         }
+    }
+
+    private void Initialize()
+    {
+        if (!isInitialized)
+        {
+            isInitialized = true;
+            mAnimator = GetComponent<Animator>();
+            asteroidCreator = GetComponent<AsteroidCreator>();
+            mAnimator = GetComponent<Animator>();
+        }
+        preparedAsteroids = asteroidCreator.PrepareAsteroids(m_RotateTarget);
     }
 
     protected override void Explode()
@@ -25,7 +41,13 @@ public class Moon : SpaceObject
             asteroid.AddActionOnDestroyed(m_LevelCompleter.GetDestroyedAsteroidCallback());
         }
         m_LevelCompleter.InitializeLevel(preparedAsteroids.Count);
-        this.gameObject.SetActive(false);
+        mAnimator.SetTrigger(DESPAWN_TRIGGER);
         //base.Explode();
+    }
+
+    public void Spawn()
+    {
+        Initialize();
+        mAnimator.SetTrigger(SPAWN_TRIGGER);
     }
 }

@@ -40,7 +40,6 @@ public class LevelCompleter : MonoBehaviour
     {
         if(levelHasBegun && asteroidsToTrack == 0)
         {
-            Debug.Log("Level is ended");
             levelsCompleted++;
             levelCompleteAnnouncement.ShowAnnouncement(levelsCompleted);
         }

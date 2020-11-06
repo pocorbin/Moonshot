@@ -12,6 +12,7 @@ public class LevelCompleteAnnouncement : MonoBehaviour
     private const string SLIDE_OUT_TRIGGER = "SlideOut";
 
     public TextMeshPro textToEdit;
+    public LevelStarter levelStarter;
     private TimerManager timerManager;
     private Timer countdownTimer;
     private Action onTimerEnd;
@@ -26,7 +27,6 @@ public class LevelCompleteAnnouncement : MonoBehaviour
         timerManager = GetComponent<TimerManager>();
         mAnimator = GetComponent<Animator>();
         countdownTimer = timerManager.CreateTimer(1f, true, onTimerEnd);
-        WriteNextLevelText();
     }
 
     // Update is called once per frame
@@ -37,7 +37,8 @@ public class LevelCompleteAnnouncement : MonoBehaviour
 
     public void ShowAnnouncement(int pLevelCompleted)
     {
-        nextLevel = pLevelCompleted;
+        nextLevel = pLevelCompleted+1;
+        WriteNextLevelText();
         mAnimator.SetTrigger(SLIDE_IN_TRIGGER);
     }
 
@@ -54,6 +55,8 @@ public class LevelCompleteAnnouncement : MonoBehaviour
         {
             countdownTimer.Stop();
             mAnimator.SetTrigger(SLIDE_OUT_TRIGGER);
+            levelStarter.StartLevel();
+            secondsLeft = 3;
         }
     }
 

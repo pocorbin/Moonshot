@@ -15,6 +15,7 @@ public class SpaceObject : MonoBehaviour
     public int m_MaxHealth = 1;
     public float m_BaseRotationSpeed = 40f;
     public float m_DistanceCoefficient = 1f; //Raise this to make the asteroid rotate faster the closer it is to its target
+    public ParticleSystem m_ExplosionEffect;
 
     private int currentHealth = 0;
 
@@ -75,7 +76,13 @@ public class SpaceObject : MonoBehaviour
 
     virtual protected void Explode()
     {
+        PlayExplosionFX();
         onDestroyedAction();
         GameObject.Destroy(this.gameObject);
+    }
+
+    virtual protected void PlayExplosionFX()
+    {
+        Instantiate(m_ExplosionEffect, this.transform.position, m_ExplosionEffect.transform.rotation, this.transform.parent);
     }
 }

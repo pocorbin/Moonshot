@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelStarter : MonoBehaviour
 {
     public Moon m_Moon;
+    public int difficultyLevel = 1;
     // Start is called before the first frame update
     void Start()
     {

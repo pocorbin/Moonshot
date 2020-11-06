@@ -35,6 +35,7 @@ public class Moon : SpaceObject
 
     protected override void Explode()
     {
+        PlayExplosionFX();
         foreach (Asteroid asteroid in preparedAsteroids)
         {
             asteroid.gameObject.SetActive(true);

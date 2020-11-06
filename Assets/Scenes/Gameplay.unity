@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Moon: {fileID: 1074746519}
+  difficultyLevel: 1
 --- !u!1 &42811809
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +598,11 @@ PrefabInstance:
       propertyPath: m_LevelCompleter
       value: 
       objectReference: {fileID: 3789084}
+    - target: {fileID: 380543327, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
+      propertyPath: m_ExplosionEffect
+      value: 
+      objectReference: {fileID: 3258320971181315727, guid: aec118cb8aa0c034795216535f58b82c,
+        type: 3}
     - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
       propertyPath: m_AsteroidsToSpawn
       value: 3

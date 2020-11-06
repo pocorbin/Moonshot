@@ -8,6 +8,8 @@ public class SpaceObject : MonoBehaviour
     public const string ASTEROID_TAG = "Asteroid";
     public const string MOON_TAG = "Moon";
 
+    private const float CRASH_SPEED_MULTIPLIER = 1.01f;
+
     [Header("Space Object")]
     public Transform m_RotateTarget;
     public float m_TargetAttraction = 1f;
@@ -19,6 +21,8 @@ public class SpaceObject : MonoBehaviour
 
     private int currentHealth = 0;
 
+    private bool acceleratingToCrash = false;
+
     virtual protected void Start()
     {
         currentHealth = m_MaxHealth;
@@ -29,6 +33,7 @@ public class SpaceObject : MonoBehaviour
     {
         MoveTowardsTarget();
         RotateAroundTarget();
+        AccelerateToCrash();
     }
 
     virtual protected void MoveTowardsTarget()
@@ -76,5 +81,19 @@ public class SpaceObject : MonoBehaviour
     virtual protected void PlayExplosionFX()
     {
         Instantiate(m_ExplosionEffect, this.transform.position, m_ExplosionEffect.transform.rotation, this.transform.parent);
+    }
+
+    public void CrashIntoTarget()
+    {
+        acceleratingToCrash = true;
+    }
+
+    private void AccelerateToCrash()
+    {
+        if(acceleratingToCrash)
+        {
+            m_DistanceCoefficient = Mathf.Min(m_DistanceCoefficient * CRASH_SPEED_MULTIPLIER, 10);
+            m_TargetAttraction = Mathf.Min(m_TargetAttraction * CRASH_SPEED_MULTIPLIER,16);
+        }
     }
 }

@@ -29,7 +29,7 @@ public class Earth : MonoBehaviour
     public void ReceiveDamage()
     {
         health--;
-        if(health <= 0)
+        if(health <= 0 && !isDestroyed)
         {
             isDestroyed = true;
             OnDestroyed();

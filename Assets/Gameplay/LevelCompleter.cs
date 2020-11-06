@@ -61,11 +61,15 @@ public class LevelCompleter : MonoBehaviour
     {
         Debug.Log("Game is over");
         earthIsDestroyed = true;
-        GetRidOfAsteroids();
+        GetRidOfSpaceObjects();
     }
 
-    private void GetRidOfAsteroids()
+    private void GetRidOfSpaceObjects()
     {
         //TODO improve this so it does as designed
+        foreach(var spaceObject in spaceObjectsToTrack)
+        {
+            spaceObject.CrashIntoTarget();
+        }
     }
 }

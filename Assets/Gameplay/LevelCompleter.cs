@@ -10,6 +10,7 @@ public class LevelCompleter : MonoBehaviour
     private Action destroyedEarth;
 
     public LevelCompleteAnnouncement levelCompleteAnnouncement;
+    public LevelFailedAnnouncement levelFailedAnnouncement;
 
     private Earth earth;
 
@@ -52,6 +53,7 @@ public class LevelCompleter : MonoBehaviour
         {
             //Last space object has crashed into the earth
             earth.FallOff();
+            levelFailedAnnouncement.Display();
         }
     }
 
@@ -63,8 +65,8 @@ public class LevelCompleter : MonoBehaviour
 
     private void OnDestroyedEarth()
     {
-        Debug.Log("Game is over");
         earthIsDestroyed = true;
+        levelsCompleted = 0;
         GetRidOfSpaceObjects();
     }
 

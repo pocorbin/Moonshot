@@ -59,4 +59,9 @@ public class Earth : MonoBehaviour
         health = maxHealth;
         mAnimator.SetTrigger(SPAWN_TRIGGER);
     }
+
+    public bool IsDestroyed()
+    {
+        return isDestroyed;
+    }
 }

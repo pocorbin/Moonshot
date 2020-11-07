@@ -15,10 +15,10 @@ public class AsteroidCreator : MonoBehaviour
     public float m_AsteroidMinStartDistance = 2;
     public float m_AsteroidMaxStartDistance = 6;
 
-    public List<Asteroid> PrepareAsteroids(Transform rotateTarget)
+    public List<Asteroid> PrepareAsteroids(Transform rotateTarget, int difficultyLevel)
     {
         List<Asteroid> preparedAsteroids = new List<Asteroid>();
-        for (int i = 0; i < m_AsteroidsToSpawn; i++)
+        for (int i = 0; i < m_AsteroidsToSpawn+difficultyLevel; i++)//implement a system to change the impact of diffculty level
         {
             Asteroid temp = Instantiate(m_AsteroidPrefab);
             temp.m_RotateTarget = rotateTarget;

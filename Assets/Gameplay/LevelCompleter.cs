@@ -78,4 +78,9 @@ public class LevelCompleter : MonoBehaviour
             spaceObject.CrashIntoTarget();
         }
     }
+
+    public int GetCurrentLevel()
+    {
+        return levelsCompleted;
+    }
 }

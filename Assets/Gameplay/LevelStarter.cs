@@ -6,10 +6,11 @@ public class LevelStarter : MonoBehaviour
 {
     public Moon m_Moon;
     private Earth earth;
-    public int difficultyLevel = 1;
+    private LevelCompleter levelCompleter;
     // Start is called before the first frame update
     void Start()
     {
+        levelCompleter = GetComponent<LevelCompleter>();
         earth = GetComponent<Earth>();
         StartLevel();
     }
@@ -22,7 +23,7 @@ public class LevelStarter : MonoBehaviour
 
     public void StartLevel()
     {
-        m_Moon.Spawn();
+        m_Moon.Spawn(levelCompleter.GetCurrentLevel());
         if(earth.IsDestroyed())
         {
             earth.Spawn();

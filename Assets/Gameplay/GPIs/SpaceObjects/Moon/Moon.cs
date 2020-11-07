@@ -21,7 +21,7 @@ public class Moon : SpaceObject
         }
     }
 
-    private void Initialize()
+    private void Initialize(int difficultyLevel)
     {
         if (!isInitialized)
         {
@@ -30,7 +30,7 @@ public class Moon : SpaceObject
             asteroidCreator = GetComponent<AsteroidCreator>();
             mAnimator = GetComponent<Animator>();
         }
-        preparedAsteroids = asteroidCreator.PrepareAsteroids(m_RotateTarget);
+        preparedAsteroids = asteroidCreator.PrepareAsteroids(m_RotateTarget, difficultyLevel);
     }
 
     protected override void Explode()
@@ -56,9 +56,9 @@ public class Moon : SpaceObject
         return spaceObjects;
     }
 
-    public void Spawn()
+    public void Spawn(int difficultyLevel)
     {
-        Initialize();
+        Initialize(difficultyLevel);
         mAnimator.SetTrigger(SPAWN_TRIGGER);
     }
 }

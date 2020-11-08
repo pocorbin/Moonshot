@@ -898,27 +898,6 @@ PrefabInstance:
       propertyPath: m_LevelCompleter
       value: 
       objectReference: {fileID: 3789084}
-    - target: {fileID: 380543327, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
-      propertyPath: m_ExplosionEffect
-      value: 
-      objectReference: {fileID: 3258320971181315727, guid: aec118cb8aa0c034795216535f58b82c,
-        type: 3}
-    - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
-      propertyPath: m_AsteroidsToSpawn
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
-      propertyPath: m_MinAsteroidSpeed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
-      propertyPath: m_MaxAsteroidSpeed
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
-      propertyPath: m_AsteroidMinStartDistance
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1799378266145970, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
       propertyPath: m_Name
       value: Moon
@@ -965,16 +944,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4302393811362214, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 135188348083723074, guid: 5f24f271c55915a45848b6c6642ac409,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 135188348083723074, guid: 5f24f271c55915a45848b6c6642ac409,
-        type: 3}
-      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1780,38 +1749,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940148751}
   m_CullTransparentMesh: 0
---- !u!1 &1074746517 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1799378266145970, guid: 5f24f271c55915a45848b6c6642ac409,
-    type: 3}
-  m_PrefabInstance: {fileID: 378821702}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1074746518
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074746517}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ab57711a7e07e904982b13ae28c53049, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1074746519 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 380543327, guid: 5f24f271c55915a45848b6c6642ac409,
     type: 3}
   m_PrefabInstance: {fileID: 378821702}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074746517}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 334d90784a2b3b44ab78af18dc9fd81a, type: 3}
@@ -2533,6 +2477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775756921271972728, guid: 040680d4574436e4d8bad70ee5c234d1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5777771470186893610, guid: 040680d4574436e4d8bad70ee5c234d1,
         type: 3}

@@ -48,6 +48,6 @@ public class AsteroidCreator : MonoBehaviour
     private void RandomizeAsteroidStartPosition(Asteroid asteroid)
     {
         float altitude = Random.Range(m_AsteroidMinStartDistance, m_AsteroidMaxStartDistance);
-        asteroid.transform.position = new Vector2(0, altitude);
+        asteroid.transform.position = new Vector3(0, altitude,0);
     }
 }

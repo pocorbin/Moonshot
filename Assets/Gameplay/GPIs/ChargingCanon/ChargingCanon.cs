@@ -49,7 +49,7 @@ public class ChargingCanon : Canon
     {
         if (Input.GetKeyDown(m_KeyToPress))
         {
-            StartCharging();
+            KeyDown();
         }
     }
 
@@ -59,16 +59,27 @@ public class ChargingCanon : Canon
         {
             if(Input.GetKeyUp(m_KeyToPress))
             {
-                hasStartedCharging = false;
-                if(isShotReady)
-                {
-                    isShotReady = false;
-                    Shoot();
-                } else
-                {
-                    FailCharge();
-                }
+                KeyUp();
             }
+        }
+    }
+
+    public void KeyDown()
+    {
+        StartCharging();
+    }
+
+    public void KeyUp()
+    {
+        hasStartedCharging = false;
+        if (isShotReady)
+        {
+            isShotReady = false;
+            Shoot();
+        }
+        else
+        {
+            FailCharge();
         }
     }
 

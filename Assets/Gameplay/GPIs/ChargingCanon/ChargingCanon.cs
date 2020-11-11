@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class ChargingCanon : Canon
 {
@@ -16,6 +17,8 @@ public class ChargingCanon : Canon
     public ParticleSystem m_ChargingFailedEffect;
     public ParticleSystem m_ChargingCompleteEffect;
     public ParticleSystem m_ChargingCompleteEffectLoop;
+
+    public ChargingOverlay m_ChargingOverlay;
 
     private TimerManager timerManager;
 
@@ -86,6 +89,7 @@ public class ChargingCanon : Canon
     public override void Shoot()
     {
         base.Shoot();
+        m_ChargingOverlay.StopFilling();
         if(m_ChargingCompleteEffectLoop.isPlaying)
         {
             m_ChargingCompleteEffectLoop.Stop();
@@ -99,6 +103,7 @@ public class ChargingCanon : Canon
             timerManager.DestroyAllTimers();
             chargingTimer = timerManager.CreateTimer(secondsBeforeShotIsReady, readyShot);
             chargingTimer.Start();
+            m_ChargingOverlay.SetTimerToTrack(chargingTimer);
             hasStartedCharging = true;
             m_ChargingEffect.Play();
             mChargingClip.Play();
@@ -114,6 +119,7 @@ public class ChargingCanon : Canon
         mRandomChargingSFXAssigner.AssignSFX();
         mChargingFailedClip.Play();
         mChargingClip.Stop();
+        m_ChargingOverlay.StopFilling();
     }
 
     private void ReadyShot()

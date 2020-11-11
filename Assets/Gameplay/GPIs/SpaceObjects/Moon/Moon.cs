@@ -7,6 +7,7 @@ public class Moon : SpaceObject
     private const string SPAWN_TRIGGER = "Spawn";
     private const string DESPAWN_TRIGGER = "Despawn";
     public LevelCompleter m_LevelCompleter;
+    public StatsTracker m_StatsTracker;
     private AsteroidCreator asteroidCreator;
     private List<Asteroid> preparedAsteroids = new List<Asteroid>();
 
@@ -40,6 +41,7 @@ public class Moon : SpaceObject
         {
             asteroid.gameObject.SetActive(true);
             asteroid.AddActionOnDestroyed(m_LevelCompleter.GetDestroyedAsteroidCallback());
+            asteroid.AddActionOnDestroyed(m_StatsTracker.GetDestroyedAsteroidCallback());
         }
         m_LevelCompleter.InitializeLevel(AsteroidListToSpaceObjectList(preparedAsteroids));
         mAnimator.SetTrigger(DESPAWN_TRIGGER);

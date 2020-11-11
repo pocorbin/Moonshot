@@ -7,6 +7,7 @@ public class LevelStarter : MonoBehaviour
     public Moon m_Moon;
     private Earth earth;
     private LevelCompleter levelCompleter;
+    public StatsTracker m_StatsTracker;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class LevelStarter : MonoBehaviour
         m_Moon.Spawn(levelCompleter.GetCurrentLevel());
         if(earth.IsDestroyed())
         {
+            m_StatsTracker.ResetStats();
             earth.Spawn();
         }
     }

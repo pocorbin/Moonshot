@@ -14,6 +14,8 @@ public class Canon : MonoBehaviour
 
     public ParticleSystem m_MuzzleFlash;
 
+    public StatsTracker m_StatsTracker;
+
     protected RandomSFXAssigner sfxAssigner;
     protected AudioSource audioSource;
     // Start is called before the first frame update
@@ -42,6 +44,8 @@ public class Canon : MonoBehaviour
         Pellet shotPellet = Instantiate(m_PelletPrefab);
         Rigidbody pelletBody = shotPellet.GetComponent<Rigidbody>();
         pelletBody.velocity = m_Direction * missileSpeed;
+        shotPellet.SetMissCallback(m_StatsTracker.GetMissileMissCallback());
+        shotPellet.SetMissileHitCallback(m_StatsTracker.GetMissileHitCallback());
         if(m_Direction.x < 0)
         {
             shotPellet.transform.Rotate(0, 0, 90);

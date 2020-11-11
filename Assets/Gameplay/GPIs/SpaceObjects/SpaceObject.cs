@@ -23,6 +23,10 @@ public class SpaceObject : MonoBehaviour
 
     private bool acceleratingToCrash = false;
 
+    private Action onSpaceObjectDestroyedAction;
+
+    private bool canBeDestroyedByPlayer = true;
+
     virtual protected void Start()
     {
         currentHealth = m_MaxHealth;
@@ -75,6 +79,10 @@ public class SpaceObject : MonoBehaviour
     virtual protected void Explode()
     {
         PlayExplosionFX();
+        if(canBeDestroyedByPlayer)
+        {
+            onSpaceObjectDestroyedAction();
+        }
         GameObject.Destroy(this.gameObject);
     }
 
@@ -86,6 +94,7 @@ public class SpaceObject : MonoBehaviour
     public void CrashIntoTarget()
     {
         acceleratingToCrash = true;
+        canBeDestroyedByPlayer = false;
     }
 
     private void AccelerateToCrash()
@@ -95,5 +104,10 @@ public class SpaceObject : MonoBehaviour
             m_DistanceCoefficient = Mathf.Min(m_DistanceCoefficient * CRASH_SPEED_MULTIPLIER, 10);
             m_TargetAttraction = Mathf.Min(m_TargetAttraction * CRASH_SPEED_MULTIPLIER,16);
         }
+    }
+
+    public void AddActionOnDestroyed(Action pCallback)
+    {
+        onSpaceObjectDestroyedAction += pCallback;
     }
 }

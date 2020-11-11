@@ -45,7 +45,7 @@ public class LevelCompleter : MonoBehaviour
 
     private void CheckEnd()
     {
-        if(!earthIsDestroyed && spaceObjectsToTrack.Count == 0)
+        if (!earthIsDestroyed && spaceObjectsToTrack.Count == 0)
         {
             levelsCompleted++;
             levelCompleteAnnouncement.ShowAnnouncement(levelsCompleted);
@@ -53,7 +53,9 @@ public class LevelCompleter : MonoBehaviour
         {
             //Last space object has crashed into the earth
             earth.FallOff();
-            levelFailedAnnouncement.Display();
+            levelsCompleted++;
+            levelFailedAnnouncement.Display(levelsCompleted);
+            levelsCompleted = 0;
         }
     }
 
@@ -66,7 +68,6 @@ public class LevelCompleter : MonoBehaviour
     private void OnDestroyedEarth()
     {
         earthIsDestroyed = true;
-        levelsCompleted = 0;
         GetRidOfSpaceObjects();
     }
 

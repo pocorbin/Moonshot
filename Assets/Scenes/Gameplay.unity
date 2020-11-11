@@ -1266,6 +1266,14 @@ PrefabInstance:
       propertyPath: m_StatsTracker
       value: 
       objectReference: {fileID: 1181909250}
+    - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
+      propertyPath: m_AsteroidMaxStartDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
+      propertyPath: m_AsteroidMinStartDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1799378266145970, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
       propertyPath: m_Name
       value: Moon
@@ -1313,6 +1321,18 @@ PrefabInstance:
     - target: {fileID: 4302393811362214, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302393811362214, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302393811362214, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4302393811362214, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
@@ -3742,7 +3762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2141208253
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3979,7 +3999,17 @@ PrefabInstance:
     - target: {fileID: 5775756921271972728, guid: 040680d4574436e4d8bad70ee5c234d1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775756921271972728, guid: 040680d4574436e4d8bad70ee5c234d1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5775756921271972728, guid: 040680d4574436e4d8bad70ee5c234d1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5777771470186893610, guid: 040680d4574436e4d8bad70ee5c234d1,
         type: 3}

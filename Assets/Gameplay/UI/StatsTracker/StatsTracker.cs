@@ -66,7 +66,6 @@ public class StatsTracker : MonoBehaviour
         {
             float accuracy = hits / (hits + misses) * 100;
             accuracy = Mathf.Round(accuracy);
-            Debug.Log(accuracy.ToString());
             m_AccuracyStat.text = accuracy.ToString() + "%";
         } else
         {

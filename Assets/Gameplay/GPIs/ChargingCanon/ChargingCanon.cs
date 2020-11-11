@@ -23,11 +23,18 @@ public class ChargingCanon : Canon
 
     private Timer chargingTimer;
 
+    private AudioSource mChargingClip;
+    private AudioSource mChargingFailedClip;
+    private RandomSFXAssigner mRandomChargingSFXAssigner;
+
     protected override void Start()
     {
         missileSpeed = 15f;
         timerManager = GetComponent<TimerManager>();
         readyShot += ReadyShot;
+        mChargingClip = m_ChargingEffect.GetComponent<AudioSource>();
+        mChargingFailedClip = m_ChargingFailedEffect.GetComponent<AudioSource>();
+        mRandomChargingSFXAssigner = mChargingFailedClip.GetComponent<RandomSFXAssigner>();
         base.Start();
     }
 
@@ -83,6 +90,7 @@ public class ChargingCanon : Canon
             chargingTimer.Start();
             hasStartedCharging = true;
             m_ChargingEffect.Play();
+            mChargingClip.Play();
         }
     }
 
@@ -92,6 +100,9 @@ public class ChargingCanon : Canon
         m_ChargingEffect.Stop();
         m_ChargingCompleteEffectLoop.Stop();
         m_ChargingFailedEffect.Play();
+        mRandomChargingSFXAssigner.AssignSFX();
+        mChargingFailedClip.Play();
+        mChargingClip.Stop();
     }
 
     private void ReadyShot()

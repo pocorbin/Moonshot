@@ -22,7 +22,7 @@ public class Moon : SpaceObject
         }
     }
 
-    private void Initialize(float pointBudget)
+    private void Initialize()
     {
         if (!isInitialized)
         {
@@ -31,7 +31,7 @@ public class Moon : SpaceObject
             asteroidCreator = GetComponent<AsteroidCreator>();
             mAnimator = GetComponent<Animator>();
         }
-        preparedAsteroids = asteroidCreator.PrepareAsteroids(m_RotateTarget, pointBudget);
+        preparedAsteroids = asteroidCreator.PrepareAsteroids(m_RotateTarget);
     }
 
     protected override void Explode()
@@ -58,9 +58,9 @@ public class Moon : SpaceObject
         return spaceObjects;
     }
 
-    public void Spawn(float pointBudget)
+    public void Spawn()
     {
-        Initialize(pointBudget);
+        Initialize();
         mAnimator.SetTrigger(SPAWN_TRIGGER);
     }
 }

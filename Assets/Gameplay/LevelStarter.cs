@@ -8,9 +8,7 @@ public class LevelStarter : MonoBehaviour
     private Earth earth;
     private LevelCompleter levelCompleter;
     public StatsTracker m_StatsTracker;
-    public int m_PointBudgetForFirstLevel = 100;
-    private float pointBudgetForCurrentLevel = 0;
-    public float m_PointBudgetPercentIncrease = 30f;
+    public PointAccountant m_PointAccountant;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +25,8 @@ public class LevelStarter : MonoBehaviour
 
     public void StartLevel()
     {
-        CalculatePointBudgetForLevel();
-        m_Moon.Spawn(levelCompleter.GetCurrentLevel());
+        m_PointAccountant.PreparePointBudget(levelCompleter.GetCurrentLevel());
+        m_Moon.Spawn();
         if(earth.IsDestroyed())
         {
             m_StatsTracker.ResetStats();
@@ -36,16 +34,4 @@ public class LevelStarter : MonoBehaviour
         }
     }
 
-    private void CalculatePointBudgetForLevel()
-    {
-        if(levelCompleter.GetCurrentLevel() == 0)
-        {
-            //reset point budget
-            pointBudgetForCurrentLevel = m_PointBudgetForFirstLevel;
-        } else
-        {
-            float percentIncrease = m_PointBudgetPercentIncrease / 100f;
-            pointBudgetForCurrentLevel = pointBudgetForCurrentLevel + (levelCompleter.GetCurrentLevel() * percentIncrease);
-        }
-    }
 }

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_DistanceCoefficient: 2
   m_ExplosionEffect: {fileID: 3258320971181315727, guid: aec118cb8aa0c034795216535f58b82c,
     type: 3}
+  remainingPointBudget: 0
 --- !u!54 &1266118595997275
 Rigidbody:
   m_ObjectHideFlags: 0

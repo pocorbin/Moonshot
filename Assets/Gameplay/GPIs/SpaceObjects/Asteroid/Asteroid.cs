@@ -10,7 +10,7 @@ public class Asteroid : SpaceObject
 
     override protected void Start()
     {
-        pointValue = AsteroidCreator.BASE_ASTEROID_COST;
+        pointValue += AsteroidCreator.BASE_ASTEROID_COST;
         base.Start();
     }
 
@@ -32,11 +32,13 @@ public class Asteroid : SpaceObject
     override protected void Explode()
     {
         onAsteroidDestroyedAction(this);
+        Debug.Log("This asteroid was worth " + pointValue + " points!");
         base.Explode();
     }
 
     public void IncreasePointValue(float pointIncrease)
     {
         pointValue += pointIncrease;
+        remainingPointBudget -= pointIncrease;
     }
 }

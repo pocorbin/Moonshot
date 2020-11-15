@@ -43,7 +43,7 @@ public class AsteroidCreator : MonoBehaviour
             if(m_PointAccountant.Spend(m_PointAccountant.GetSpeedCost()))
             {
                 rotationSpeed += m_PointAccountant.GetSpeedIncrementRate();
-                asteroid.remainingPointBudget -= m_PointAccountant.GetSpeedCost();
+                asteroid.IncreasePointValue(m_PointAccountant.GetSpeedCost());
             }
         }
         //Randomize direction
@@ -61,17 +61,14 @@ public class AsteroidCreator : MonoBehaviour
 
         float altitude = m_PointAccountant.GetMaxAltitudeValue();
         int numberOfPurchases = Random.Range(0, m_PointAccountant.GetMaximumPossibleAltitudePurchases(asteroid.remainingPointBudget));
-        float totalPointsSpent = 0f;
         for (int i = 0; i < numberOfPurchases; i++)
         {
             if (m_PointAccountant.Spend(m_PointAccountant.GetAltitudeCost()))
             {
                 altitude -= m_PointAccountant.GetAltitudeIncrementRate();
-                asteroid.remainingPointBudget -= m_PointAccountant.GetAltitudeCost();
-                totalPointsSpent += m_PointAccountant.GetAltitudeCost();
+                asteroid.IncreasePointValue(m_PointAccountant.GetAltitudeCost());
             }
         }
-        Debug.Log("Spent " + totalPointsSpent + " points on altitude to reach " + altitude);
         asteroid.transform.position = new Vector3(0, altitude, 0);
     }
 }

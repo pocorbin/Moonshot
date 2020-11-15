@@ -12,10 +12,11 @@ public class PointAccountant : MonoBehaviour
     public DifficultyBudget m_AsteroidBudget;
     public DifficultyBudget m_SpeedBudget;
     public DifficultyBudget m_AltitudeBudget;
+    public DifficultyBudget m_AttractionBudget;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -91,7 +92,7 @@ public class PointAccountant : MonoBehaviour
     public int GetMaximumPossibleSpeedPurchases(float remainingAsteroidBudget)
     {
         float difference = m_SpeedBudget.GetMaxValue(currentLevel) - m_SpeedBudget.GetMinValue(currentLevel);
-        int maxPossibleSpeedPurchases = Mathf.FloorToInt(difference/m_SpeedBudget.cost);
+        int maxPossibleSpeedPurchases = Mathf.FloorToInt(difference/m_SpeedBudget.incrementRate);
 
         int maxPossiblePurchasesWithRemainingBudget = Mathf.FloorToInt(remainingAsteroidBudget / m_SpeedBudget.incrementRate/ m_SpeedBudget.cost);
 
@@ -125,12 +126,46 @@ public class PointAccountant : MonoBehaviour
     public int GetMaximumPossibleAltitudePurchases(float remainingAsteroidBudget)
     {
         float difference = m_AltitudeBudget.GetMaxValue(currentLevel) - m_AltitudeBudget.GetMinValue(currentLevel);
-        int maxPossibleAltitudePurchases = Mathf.FloorToInt(difference /m_AltitudeBudget.incrementRate/ m_AltitudeBudget.cost);
+        int maxPossibleAltitudePurchases = Mathf.FloorToInt(difference /m_AltitudeBudget.incrementRate);
 
         int maxPossiblePurchasesWithRemainingBudget = Mathf.FloorToInt(remainingAsteroidBudget / m_AltitudeBudget.cost);
 
         maxPossibleAltitudePurchases = Mathf.Min(maxPossibleAltitudePurchases, maxPossiblePurchasesWithRemainingBudget);
 
         return maxPossibleAltitudePurchases;
+    }
+
+    public float GetMinAttractionValue()
+    {
+        return m_AttractionBudget.GetMinValue(currentLevel);
+    }
+
+    public float GetMaxAttractionValue()
+    {
+        return m_AttractionBudget.GetMaxValue(currentLevel);
+    }
+
+    public float GetAttractionCost()
+    {
+        return m_AttractionBudget.cost;
+    }
+
+    public float GetAttractionIncrementRate()
+    {
+        return m_AttractionBudget.incrementRate;
+    }
+
+    //This considers the maximum number of purchases given the min and max value, as well as the asteroid budget.
+    //This DOES NOT take into account the remaining point budgets for the current level
+    public int GetMaximumPossibleAttractionPurchases(float remainingAsteroidBudget)
+    {
+        float difference = m_AttractionBudget.GetMaxValue(currentLevel) - m_AttractionBudget.GetMinValue(currentLevel);
+        int maxPossiblePurchases = Mathf.FloorToInt(difference / m_AttractionBudget.incrementRate);
+
+        int maxPossiblePurchasesWithRemainingBudget = Mathf.FloorToInt(remainingAsteroidBudget / m_AttractionBudget.cost);
+
+        maxPossiblePurchases = Mathf.Min(maxPossiblePurchases, maxPossiblePurchasesWithRemainingBudget);
+
+        return maxPossiblePurchases;
     }
 }

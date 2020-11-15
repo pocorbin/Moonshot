@@ -1485,6 +1485,7 @@ MonoBehaviour:
   m_AsteroidBudget: {fileID: 11400000, guid: e1983967f2d637e40a5cf54ca0c8c9a4, type: 2}
   m_SpeedBudget: {fileID: 11400000, guid: 334efd292635ce944b3550a166dd914c, type: 2}
   m_AltitudeBudget: {fileID: 11400000, guid: 6bf00e9b4f9d96d4c83bb75a04bb5ae7, type: 2}
+  m_AttractionBudget: {fileID: 11400000, guid: 982e1c1ce38b9fa4bb35138314311e91, type: 2}
 --- !u!1 &381352766
 GameObject:
   m_ObjectHideFlags: 0

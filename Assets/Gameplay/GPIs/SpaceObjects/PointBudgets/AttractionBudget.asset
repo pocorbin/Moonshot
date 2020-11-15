@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53523e8b7cc015e449175f261d32137e, type: 3}
   m_Name: AttractionBudget
   m_EditorClassIdentifier: 
-  baseMin: 0
-  baseMax: 0
-  minIncrementationPerLevel: 0
-  maxIncrementationPerLevel: 0
-  cost: 1
-  incrementRate: 1
+  baseMin: 1
+  baseMax: 2
+  minIncrementationPerLevel: 0.1
+  maxIncrementationPerLevel: 0.2
+  cost: 5
+  incrementRate: 0.5

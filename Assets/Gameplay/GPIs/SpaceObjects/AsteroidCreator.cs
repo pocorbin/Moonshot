@@ -31,13 +31,14 @@ public class AsteroidCreator : MonoBehaviour
     private void RandomizeAsteroidProperties(Asteroid asteroid)
     {
         RandomizeAsteroidSpeed(asteroid);
+        RandomizeAsteroidAttraction(asteroid);
         RandomizeAsteroidAltitude(asteroid);
     }
 
     private void RandomizeAsteroidSpeed(Asteroid asteroid)
     {
         float rotationSpeed = m_PointAccountant.GetMinSpeedValue();
-        int numberOfPurchases = Random.Range(0, m_PointAccountant.GetMaximumPossibleSpeedPurchases(asteroid.remainingPointBudget));
+        int numberOfPurchases = Random.Range(0, m_PointAccountant.GetMaximumPossibleSpeedPurchases(asteroid.remainingPointBudget) + 1);
         for(int i = 0; i < numberOfPurchases; i++)
         {
             if(m_PointAccountant.Spend(m_PointAccountant.GetSpeedCost()))
@@ -54,13 +55,26 @@ public class AsteroidCreator : MonoBehaviour
         asteroid.m_BaseRotationSpeed = rotationSpeed;
     }
 
+    private void RandomizeAsteroidAttraction(Asteroid asteroid)
+    {
+        float attraction = m_PointAccountant.GetMinAttractionValue();
+        int numberOfPurchases = Random.Range(0, m_PointAccountant.GetMaximumPossibleAttractionPurchases(asteroid.remainingPointBudget)+1);
+        for (int i = 0; i < numberOfPurchases; i++)
+        {
+            if (m_PointAccountant.Spend(m_PointAccountant.GetAttractionCost()))
+            {
+                attraction += m_PointAccountant.GetAttractionIncrementRate();
+                asteroid.IncreasePointValue(m_PointAccountant.GetAttractionCost());
+            }
+        }
+        asteroid.m_TargetAttraction = attraction;
+        Debug.Log(asteroid.m_TargetAttraction);
+    }
+
     private void RandomizeAsteroidAltitude(Asteroid asteroid)
     {
-        //float altitude = Random.Range(m_AsteroidMinStartDistance, m_AsteroidMaxStartDistance);
-        //asteroid.transform.position = new Vector3(0, altitude,0);
-
         float altitude = m_PointAccountant.GetMaxAltitudeValue();
-        int numberOfPurchases = Random.Range(0, m_PointAccountant.GetMaximumPossibleAltitudePurchases(asteroid.remainingPointBudget));
+        int numberOfPurchases = Random.Range(0, m_PointAccountant.GetMaximumPossibleAltitudePurchases(asteroid.remainingPointBudget) + 1);
         for (int i = 0; i < numberOfPurchases; i++)
         {
             if (m_PointAccountant.Spend(m_PointAccountant.GetAltitudeCost()))

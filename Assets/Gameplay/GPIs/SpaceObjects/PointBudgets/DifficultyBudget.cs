@@ -10,6 +10,7 @@ public class DifficultyBudget : ScriptableObject
     public float minIncrementationPerLevel = 0f;
     public float maxIncrementationPerLevel = 0f;
     public float cost = 1f;
+    public float incrementRate = 1f;
 
     public float GetMinValue(int currentLevel)
     {

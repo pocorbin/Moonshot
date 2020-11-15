@@ -9,8 +9,6 @@ public class AsteroidCreator : MonoBehaviour
 
     [Header("Asteroid Randomization")]
     public PointAccountant m_PointAccountant;
-    public int m_MinAsteroidSpeed = 1;
-    public int m_MaxAsteroidSpeed = 200;
 
     public float m_AsteroidMinStartDistance = 2;
     public float m_AsteroidMaxStartDistance = 6;
@@ -18,14 +16,6 @@ public class AsteroidCreator : MonoBehaviour
     public List<Asteroid> PrepareAsteroids(Transform rotateTarget)
     {
         List<Asteroid> preparedAsteroids = new List<Asteroid>();
-        /*for (int i = 0; i < m_AsteroidsToSpawn; i++)
-        {
-            Asteroid temp = Instantiate(m_AsteroidPrefab);
-            temp.m_RotateTarget = rotateTarget;
-            temp.gameObject.SetActive(false);
-            RandomizeAsteroidProperties(temp);
-            preparedAsteroids.Add(temp);
-        }*/
         while(m_PointAccountant.Spend(BASE_ASTEROID_COST))
         {
             Asteroid temp = Instantiate(m_AsteroidPrefab);
@@ -41,33 +31,21 @@ public class AsteroidCreator : MonoBehaviour
     private void RandomizeAsteroidProperties(Asteroid asteroid)
     {
         RandomizeAsteroidSpeed(asteroid);
-        RandomizeAsteroidStartPosition(asteroid);
+        RandomizeAsteroidAltitude(asteroid);
     }
 
     private void RandomizeAsteroidSpeed(Asteroid asteroid)
     {
-        /*int rotationSpeed = Random.Range(m_MinAsteroidSpeed, m_MaxAsteroidSpeed);
-        if (Random.Range(0, 2) == 1)
-        {
-            rotationSpeed = rotationSpeed * -1;
-        }
-        asteroid.m_BaseRotationSpeed = rotationSpeed;*/
-
         float rotationSpeed = m_PointAccountant.GetMinSpeedValue();
         int numberOfPurchases = Random.Range(0, m_PointAccountant.GetMaximumPossibleSpeedPurchases(asteroid.remainingPointBudget));
         for(int i = 0; i < numberOfPurchases; i++)
         {
             if(m_PointAccountant.Spend(m_PointAccountant.GetSpeedCost()))
             {
-                rotationSpeed++;
+                rotationSpeed += m_PointAccountant.GetSpeedIncrementRate();
                 asteroid.remainingPointBudget -= m_PointAccountant.GetSpeedCost();
             }
         }
-
-
-        float debugFloat = rotationSpeed - m_PointAccountant.GetMinSpeedValue();
-        debugFloat = debugFloat * m_PointAccountant.GetSpeedCost();
-        Debug.Log("Spent " + debugFloat + " points on speed to reach " + rotationSpeed);
         //Randomize direction
         if (Random.Range(0, 2) == 1)
         {
@@ -76,9 +54,24 @@ public class AsteroidCreator : MonoBehaviour
         asteroid.m_BaseRotationSpeed = rotationSpeed;
     }
 
-    private void RandomizeAsteroidStartPosition(Asteroid asteroid)
+    private void RandomizeAsteroidAltitude(Asteroid asteroid)
     {
-        float altitude = Random.Range(m_AsteroidMinStartDistance, m_AsteroidMaxStartDistance);
-        asteroid.transform.position = new Vector3(0, altitude,0);
+        //float altitude = Random.Range(m_AsteroidMinStartDistance, m_AsteroidMaxStartDistance);
+        //asteroid.transform.position = new Vector3(0, altitude,0);
+
+        float altitude = m_PointAccountant.GetMaxAltitudeValue();
+        int numberOfPurchases = Random.Range(0, m_PointAccountant.GetMaximumPossibleAltitudePurchases(asteroid.remainingPointBudget));
+        float totalPointsSpent = 0f;
+        for (int i = 0; i < numberOfPurchases; i++)
+        {
+            if (m_PointAccountant.Spend(m_PointAccountant.GetAltitudeCost()))
+            {
+                altitude -= m_PointAccountant.GetAltitudeIncrementRate();
+                asteroid.remainingPointBudget -= m_PointAccountant.GetAltitudeCost();
+                totalPointsSpent += m_PointAccountant.GetAltitudeCost();
+            }
+        }
+        Debug.Log("Spent " + totalPointsSpent + " points on altitude to reach " + altitude);
+        asteroid.transform.position = new Vector3(0, altitude, 0);
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53523e8b7cc015e449175f261d32137e, type: 3}
   m_Name: AltitudeBudget
   m_EditorClassIdentifier: 
-  baseMin: 2
+  baseMin: 2.5
   baseMax: 5
   minIncrementationPerLevel: 0
   maxIncrementationPerLevel: 0

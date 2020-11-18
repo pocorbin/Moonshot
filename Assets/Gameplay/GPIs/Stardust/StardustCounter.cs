@@ -54,7 +54,7 @@ public class StardustCounter : MonoBehaviour
 
     private void AnimateText()
     {
-        numberOfIncrementsLeft += BASE_NUMBER_OF_INCREMENTS;
+        numberOfIncrementsLeft = BASE_NUMBER_OF_INCREMENTS;
         DetermineIncrementRate();
 
         if (!singleIncrementTimer.IsStarted())//There is no ongoing animation

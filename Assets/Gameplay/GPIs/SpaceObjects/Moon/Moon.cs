@@ -43,7 +43,6 @@ public class Moon : SpaceObject
             asteroid.gameObject.SetActive(true);
             asteroid.AddActionOnDestroyed(m_LevelCompleter.GetDestroyedAsteroidCallback());
             asteroid.AddActionOnDestroyed(m_StatsTracker.GetDestroyedAsteroidCallback());
-            asteroid.AddActionOnDestroyed(m_StardustCounter.GetDestroyedAsteroidCallback());
         }
         m_LevelCompleter.InitializeLevel(AsteroidListToSpaceObjectList(preparedAsteroids));
         mAnimator.SetTrigger(DESPAWN_TRIGGER);

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StardustVFX : MonoBehaviour
+public class Stardust : MonoBehaviour
 {
     public const string STARDUST_TAG = "Stardust";
 

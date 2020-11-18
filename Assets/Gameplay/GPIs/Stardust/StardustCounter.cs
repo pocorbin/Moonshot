@@ -16,7 +16,6 @@ public class StardustCounter : MonoBehaviour
     private TimerManager timerManager;
     private Timer singleIncrementTimer;
     private Action IncrementOnceCallback;
-    private Action<Asteroid> AddStardustFromAsteroidCallback;
 
     private float incrementRate = 0;//Can be negative
     private int numberOfIncrementsLeft = 0;
@@ -26,7 +25,6 @@ public class StardustCounter : MonoBehaviour
     {
         timerManager = GetComponent<TimerManager>();
         IncrementOnceCallback += IncrementOnce;
-        AddStardustFromAsteroidCallback += AddStardustFromAsteroid;
         singleIncrementTimer = timerManager.CreateTimer(SINGLE_INCREMENT_TIME, true, IncrementOnceCallback);
     }
 
@@ -34,11 +32,6 @@ public class StardustCounter : MonoBehaviour
     void Update()
     {
 
-    }
-
-    private void AddStardustFromAsteroid(Asteroid minedAsteroid)
-    {
-        //IncreaseStardustCount(minedAsteroid.GetPointValue());
     }
 
     public void IncreaseStardustCount(float pIncreaseAmount)
@@ -90,11 +83,4 @@ public class StardustCounter : MonoBehaviour
             singleIncrementTimer.Stop();
         }
     }
-
-    public Action<Asteroid> GetDestroyedAsteroidCallback()
-    {
-        return AddStardustFromAsteroid;
-    }
-
-
 }

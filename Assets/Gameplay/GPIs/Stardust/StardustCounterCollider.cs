@@ -19,9 +19,9 @@ public class StardustCounterCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == StardustVFX.STARDUST_TAG)
+        if(collision.tag == Stardust.STARDUST_TAG)
         {
-            StardustVFX dust = collision.GetComponent<StardustVFX>();
+            Stardust dust = collision.GetComponent<Stardust>();
             m_StardustCounter.IncreaseStardustCount(dust.value);
             dust.GetComponent<ParticleSystem>().Stop();
         }

@@ -42,7 +42,7 @@ public class Asteroid : SpaceObject
     {
 
         GameObject stardustObject = Instantiate(m_StardustEffect, this.transform.position, m_StardustEffect.transform.rotation, this.transform.parent);
-        StardustVFX stardust = stardustObject.GetComponent<StardustVFX>();
+        Stardust stardust = stardustObject.GetComponent<Stardust>();
         stardust.value = this.pointValue;
     }
 

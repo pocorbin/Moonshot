@@ -38,7 +38,7 @@ public class StardustCounter : MonoBehaviour
 
     private void AddStardustFromAsteroid(Asteroid minedAsteroid)
     {
-        IncreaseStardustCount(minedAsteroid.GetPointValue());
+        //IncreaseStardustCount(minedAsteroid.GetPointValue());
     }
 
     public void IncreaseStardustCount(float pIncreaseAmount)

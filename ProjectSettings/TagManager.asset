@@ -7,6 +7,8 @@ TagManager:
   - Asteroid
   - Moon
   - Earth
+  - Stardust
+  - StardustCounter
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Asteroid
   - Earth
   - Moon
-  - 
+  - Stardust
   - 
   - 
   - 

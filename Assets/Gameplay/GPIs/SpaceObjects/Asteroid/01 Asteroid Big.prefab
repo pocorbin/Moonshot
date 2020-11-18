@@ -129,6 +129,8 @@ MonoBehaviour:
   m_ExplosionEffect: {fileID: 3258320971181315727, guid: aec118cb8aa0c034795216535f58b82c,
     type: 3}
   remainingPointBudget: 0
+  m_StardustEffect: {fileID: 2603911961319905616, guid: a9f5d88ac575a924db522499463b316c,
+    type: 3}
 --- !u!54 &1266118595997275
 Rigidbody:
   m_ObjectHideFlags: 0

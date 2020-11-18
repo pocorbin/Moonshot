@@ -6,6 +6,7 @@ public class Asteroid : SpaceObject
 {
     private Action<Asteroid> onAsteroidDestroyedAction;
     public float remainingPointBudget = 0f; //Used during preparation
+    public GameObject m_StardustEffect;
     private float pointValue = 0f; //Will be used for score
 
     override protected void Start()
@@ -31,9 +32,18 @@ public class Asteroid : SpaceObject
 
     override protected void Explode()
     {
+        SpawnStardust();
         onAsteroidDestroyedAction(this);
         Debug.Log("This asteroid was worth " + pointValue + " points!");
         base.Explode();
+    }
+
+    private void SpawnStardust()
+    {
+
+        GameObject stardustObject = Instantiate(m_StardustEffect, this.transform.position, m_StardustEffect.transform.rotation, this.transform.parent);
+        StardustVFX stardust = stardustObject.GetComponent<StardustVFX>();
+        stardust.value = this.pointValue;
     }
 
     public void IncreasePointValue(float pointIncrease)

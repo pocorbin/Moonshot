@@ -23,7 +23,7 @@ public class StardustCounterCollider : MonoBehaviour
         {
             StardustVFX dust = collision.GetComponent<StardustVFX>();
             m_StardustCounter.IncreaseStardustCount(dust.value);
-            Destroy(dust.gameObject);
+            dust.GetComponent<ParticleSystem>().Stop();
         }
     }
 }

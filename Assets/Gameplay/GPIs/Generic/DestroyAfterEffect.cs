@@ -21,8 +21,20 @@ public class DestroyAfterEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckVisualEffectStatus();
-        CheckSoundEffectStatus();
+        if(mParticleSystem != null)
+        {
+            CheckVisualEffectStatus();
+        } else
+        {
+            hasPlayedVisualEffectOnce = true;
+        }
+        if(mAudioSource != null)
+        {
+            CheckSoundEffectStatus();
+        } else
+        {
+            hasPlayedSoundEffectOnce = true;
+        }
         CheckDestroy();
     }
 

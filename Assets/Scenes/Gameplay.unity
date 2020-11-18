@@ -1409,6 +1409,10 @@ PrefabInstance:
       propertyPath: m_StatsTracker
       value: 
       objectReference: {fileID: 1181909250}
+    - target: {fileID: 380543327, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
+      propertyPath: m_StardustCounter
+      value: 
+      objectReference: {fileID: 1982138527}
     - target: {fileID: 380543328, guid: 5f24f271c55915a45848b6c6642ac409, type: 3}
       propertyPath: m_PointAccountant
       value: 

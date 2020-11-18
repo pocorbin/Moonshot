@@ -41,4 +41,9 @@ public class Asteroid : SpaceObject
         pointValue += pointIncrease;
         remainingPointBudget -= pointIncrease;
     }
+
+    public float GetPointValue()
+    {
+        return pointValue;
+    }
 }

@@ -11,11 +11,12 @@ public class StardustCounter : MonoBehaviour
     public Text m_StardustCountText;
 
     private float currentStardustCount = 0; //This helps me track how much is displayed during an animation
-    private int targetStardustCount = 0;
+    private float targetStardustCount = 0;
 
     private TimerManager timerManager;
     private Timer singleIncrementTimer;
     private Action IncrementOnceCallback;
+    private Action<Asteroid> AddStardustFromAsteroidCallback;
 
     private float incrementRate = 0;//Can be negative
     private int numberOfIncrementsLeft = 0;
@@ -25,22 +26,22 @@ public class StardustCounter : MonoBehaviour
     {
         timerManager = GetComponent<TimerManager>();
         IncrementOnceCallback += IncrementOnce;
+        AddStardustFromAsteroidCallback += AddStardustFromAsteroid;
         singleIncrementTimer = timerManager.CreateTimer(SINGLE_INCREMENT_TIME, true, IncrementOnceCallback);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.U))
-        {
-            IncreaseStardustCount(100);
-        } else if (Input.GetKeyDown(KeyCode.D))
-        {
-            IncreaseStardustCount(-100);
-        }
+
     }
 
-    public void IncreaseStardustCount(int pIncreaseAmount)
+    private void AddStardustFromAsteroid(Asteroid minedAsteroid)
+    {
+        IncreaseStardustCount(minedAsteroid.GetPointValue());
+    }
+
+    public void IncreaseStardustCount(float pIncreaseAmount)
     {
         targetStardustCount += pIncreaseAmount;
         AnimateText();
@@ -89,5 +90,11 @@ public class StardustCounter : MonoBehaviour
             singleIncrementTimer.Stop();
         }
     }
-    
+
+    public Action<Asteroid> GetDestroyedAsteroidCallback()
+    {
+        return AddStardustFromAsteroid;
+    }
+
+
 }

@@ -68,7 +68,6 @@ public class AsteroidCreator : MonoBehaviour
             }
         }
         asteroid.m_TargetAttraction = attraction;
-        Debug.Log(asteroid.m_TargetAttraction);
     }
 
     private void RandomizeAsteroidAltitude(Asteroid asteroid)

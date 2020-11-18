@@ -26,6 +26,10 @@ public class StardustCounter : MonoBehaviour
         timerManager = GetComponent<TimerManager>();
         IncrementOnceCallback += IncrementOnce;
         singleIncrementTimer = timerManager.CreateTimer(SINGLE_INCREMENT_TIME, true, IncrementOnceCallback);
+        if (PlayerPrefs.HasKey(Settings.STARDUST_COUNT))
+        {
+            IncreaseStardustCount(PlayerPrefs.GetFloat(Settings.STARDUST_COUNT));
+        }
     }
 
     // Update is called once per frame
@@ -37,12 +41,14 @@ public class StardustCounter : MonoBehaviour
     public void IncreaseStardustCount(float pIncreaseAmount)
     {
         targetStardustCount += pIncreaseAmount;
+        PlayerPrefs.SetFloat(Settings.STARDUST_COUNT, targetStardustCount);
         AnimateText();
     }
 
-    public void DecreaseStardustCount(int pDecreaseAmount)
+    public void DecreaseStardustCount(float pDecreaseAmount)
     {
         targetStardustCount -= pDecreaseAmount;
+        PlayerPrefs.SetFloat(Settings.STARDUST_COUNT, targetStardustCount);
         AnimateText();
     }
 
@@ -82,5 +88,10 @@ public class StardustCounter : MonoBehaviour
         {
             singleIncrementTimer.Stop();
         }
+    }
+
+    public void EraseAllStardust()
+    {
+        DecreaseStardustCount(currentStardustCount);
     }
 }

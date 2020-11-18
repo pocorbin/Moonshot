@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     private const string DISPLAY_TRIGGER = "Display";
     private const string HIDE_TRIGGER = "Hide";
     private Animator mAnimator;
+    public Settings m_Settings;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +54,7 @@ public class PauseMenu : MonoBehaviour
     public void Display()
     {
         mAnimator.SetTrigger(DISPLAY_TRIGGER);
+        m_Settings.EnableEraseButton();
     }
 
     public void Hide()

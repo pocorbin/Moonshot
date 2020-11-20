@@ -17,5 +17,5 @@ MonoBehaviour:
   upgradeKey: PiercingMissiles
   description: Each upgrade increases the number of asteroids a missile can hit before
     being destroyed.
-  baseCost: 100
-  incrementRate: 10
+  baseCost: 1000
+  incrementRate: 300

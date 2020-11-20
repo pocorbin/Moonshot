@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2aaf4431e13f2d46a09bd07ad64a2f6, type: 3}
-  m_Name: PiercingMissiles
+  m_Name: WIPUpgrade
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: f079670fe5621da488c890c26808d572, type: 3}
-  upgradeName: Piercing Missiles
-  upgradeKey: PiercingMissiles
-  description: Each upgrade increases the number of asteroids a missile can hit before
-    being destroyed.
-  baseCost: 100
-  incrementRate: 10
+  icon: {fileID: 21300000, guid: c3ad8bb368684134a9183d7be5b1c685, type: 3}
+  upgradeName: In Development
+  description: This upgrade is in development. Stay tuned!
+  baseCost: 0
+  incrementRate: 0

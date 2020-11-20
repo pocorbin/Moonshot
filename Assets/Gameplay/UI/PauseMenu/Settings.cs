@@ -7,6 +7,7 @@ public class Settings : MonoBehaviour
 {
     private const string SHOW_VISUAL_KEYBOARD = "ShowKeyboard";
     public const string STARDUST_COUNT = "Stardust";
+    public const string PIERCING_MISSILES = "PiercingMissiles";
 
     private const string ERASE_SAVE_TEXT = "ERASE SAVE";
     private const string ERASE_CONFIRMATION = "ARE YOU SURE?";
@@ -79,6 +80,7 @@ public class Settings : MonoBehaviour
     {
         PlayerPrefs.DeleteKey(SHOW_VISUAL_KEYBOARD);
         PlayerPrefs.DeleteKey(STARDUST_COUNT);
+        PlayerPrefs.DeleteKey(PIERCING_MISSILES);
 
         m_StardustCounter.EraseAllStardust();
         SetActiveVirtualKeyboard(1);

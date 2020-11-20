@@ -26,14 +26,14 @@ public class DestroyAfterEffect : MonoBehaviour
             CheckVisualEffectStatus();
         } else
         {
-            hasPlayedVisualEffectOnce = true;
+            visualEffectIsFinished = true;
         }
         if(mAudioSource != null)
         {
             CheckSoundEffectStatus();
         } else
         {
-            hasPlayedSoundEffectOnce = true;
+            soundEffectIsFinished = true;
         }
         CheckDestroy();
     }

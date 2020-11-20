@@ -21,11 +21,11 @@ public class SpaceObject : MonoBehaviour
 
     private int currentHealth = 0;
 
-    private bool acceleratingToCrash = false;
+    protected bool acceleratingToCrash = false;
 
     private Action onSpaceObjectDestroyedAction;
 
-    private bool canBeDestroyedByPlayer = true;
+    protected bool canBeDestroyedByPlayer = true;
 
     virtual protected void Start()
     {

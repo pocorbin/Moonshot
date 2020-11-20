@@ -40,10 +40,12 @@ public class Asteroid : SpaceObject
 
     private void SpawnStardust()
     {
-
-        GameObject stardustObject = Instantiate(m_StardustEffect, this.transform.position, m_StardustEffect.transform.rotation, this.transform.parent);
-        Stardust stardust = stardustObject.GetComponent<Stardust>();
-        stardust.value = this.pointValue;
+        if(canBeDestroyedByPlayer)
+        {
+            GameObject stardustObject = Instantiate(m_StardustEffect, this.transform.position, m_StardustEffect.transform.rotation, this.transform.parent);
+            Stardust stardust = stardustObject.GetComponent<Stardust>();
+            stardust.value = this.pointValue;
+        }
     }
 
     public void IncreasePointValue(float pointIncrease)

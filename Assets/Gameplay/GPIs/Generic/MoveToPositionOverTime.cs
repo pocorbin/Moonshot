@@ -16,6 +16,7 @@ public class MoveToPositionOverTime : MonoBehaviour
     void Update()
     {
         Vector3 newPos = new Vector3(m_TargetPosition.x, m_TargetPosition.y, m_TargetPosition.z);
-        transform.position = Vector3.Lerp(transform.position, newPos, m_Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(m_TargetPosition, newPos, m_Speed * Time.deltaTime);
+        //transform.position = Vector3.Lerp(transform.position, newPos, m_Speed * Time.deltaTime);
     }
 }

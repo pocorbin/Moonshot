@@ -4774,6 +4774,7 @@ GameObject:
   - component: {fileID: 2603911961319905623}
   - component: {fileID: 2805333620921902732}
   - component: {fileID: -3269491992120219906}
+  - component: {fileID: 7914704515081967259}
   m_Layer: 11
   m_Name: StardustTrail
   m_TagString: Stardust
@@ -9478,7 +9479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TargetPosition: {x: -8, y: 4, z: 0}
-  m_Speed: 7
+  m_Speed: 0.005
 --- !u!114 &2603911961319905622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9531,6 +9532,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c0cb9851d6d8714abe9cea04111ce30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7914704515081967259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603911961319905616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c407a09dd14eee4eaab50c9ba616e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8479654004313774172

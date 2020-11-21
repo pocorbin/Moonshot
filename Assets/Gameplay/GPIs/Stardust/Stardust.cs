@@ -22,6 +22,8 @@ public class Stardust : MonoBehaviour
     private Action startMovingCallback;
     public float value = 0f;
 
+    public ParticleSystem initialExplosion;
+
     private BezierRoute route;
     private List<Vector3> controlPointsList = new List<Vector3>();
 
@@ -37,6 +39,7 @@ public class Stardust : MonoBehaviour
         movementDelayTimer = timerManager.CreateTimer(m_Delay, false, startMovingCallback);
         movementDelayTimer.Start();
         DetermineWhichRouteToUse();
+        Instantiate(initialExplosion, this.transform.position, initialExplosion.transform.rotation, this.transform.parent);
     }
 
     private void StartMoving()

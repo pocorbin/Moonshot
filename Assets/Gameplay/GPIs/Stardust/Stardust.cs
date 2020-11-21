@@ -41,7 +41,7 @@ public class Stardust : MonoBehaviour
 
     private void StartMoving()
     {
-       //mover.enabled = true;
+       mover.enabled = true;
     }
 
     private void Update()

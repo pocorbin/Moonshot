@@ -8,6 +8,7 @@ public class Pellet : MonoBehaviour
     public const string PIERCING_MISSILES_UPGRADE_KEY = "PiercingMissiles";
     private const int DISTANCE_TO_DESTROY = 20;
     public int m_Damage = 1;
+    public ParticleSystem m_PropulsionEffect;
 
     private Action missCallback;
     private Action hitCallback;
@@ -40,6 +41,7 @@ public class Pellet : MonoBehaviour
             hitCallback();
             if (mNumberOfPiercesLeft == 0)
             {
+                PutPropulsionEffectForAdoption();
                 Destroy(this.gameObject);
             }
             else
@@ -51,6 +53,7 @@ public class Pellet : MonoBehaviour
         {
             Moon collidedMoon = other.gameObject.GetComponent<Moon>();
             collidedMoon.ReceiveDamage(m_Damage);
+            PutPropulsionEffectForAdoption();
             Destroy(this.gameObject);
         }
     }
@@ -71,6 +74,15 @@ public class Pellet : MonoBehaviour
         {
             missCallback();
             Destroy(this.gameObject);
+        }
+    }
+
+    private void PutPropulsionEffectForAdoption()
+    {
+        if (m_PropulsionEffect != null)
+        {
+            m_PropulsionEffect.transform.parent =  this.transform.parent;
+            m_PropulsionEffect.Stop();
         }
     }
 }

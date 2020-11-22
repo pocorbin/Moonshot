@@ -17,7 +17,6 @@ public class MoveToPositionOverTime : MonoBehaviour
     {
         Vector3 newPos = new Vector3(m_TargetPosition.x, m_TargetPosition.y, m_TargetPosition.z);
         float speed = m_Speed * Time.deltaTime;
-        Debug.Log(speed);
         transform.position = Vector3.MoveTowards(m_TargetPosition, newPos, speed);
         //transform.position = Vector3.Lerp(transform.position, newPos,speed);
     }

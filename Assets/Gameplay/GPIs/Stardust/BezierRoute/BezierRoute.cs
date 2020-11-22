@@ -8,8 +8,7 @@ public class BezierRoute : MonoBehaviour
     private Vector2 gizmosPosition;
 
     private int curveCount = 0;
-    private int layerOrder = 0;
-    private int SEGMENT_COUNT = 10;
+    private int SEGMENT_COUNT = 60;
 
     private List<Vector3> waypoints = new List<Vector3>();
     // Start is called before the first frame update

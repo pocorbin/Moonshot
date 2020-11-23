@@ -136,4 +136,14 @@ public class ChargingCanon : Canon
         m_ChargingCompleteEffect.Play();
         m_ChargingCompleteEffectLoop.Play();
     }
+
+    public bool IsShotReady()
+    {
+        return isShotReady;
+    }
+
+    public bool IsCharging()
+    {
+        return hasStartedCharging;
+    }
 }

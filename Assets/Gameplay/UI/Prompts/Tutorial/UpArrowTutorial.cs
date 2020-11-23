@@ -10,18 +10,12 @@ public class UpArrowTutorial : MonoBehaviour
     private const string HIDE_TRIGGER = "Hide";
 
     private Animator mAnimator;
-    public Canon m_TopCannon;
-
-    private Action mHideForeverCallback;
+    public ChargingCanon m_TopCannon;
+    
     // Start is called before the first frame update
     void Start()
     {
         mAnimator = GetComponent<Animator>();
-        if(m_TopCannon != null)
-        {
-            mHideForeverCallback += HideForever;
-            m_TopCannon.SetShootCallback(mHideForeverCallback);
-        }
         if (PlayerPrefs.HasKey(HAS_CLEARED_TUTORIAL) && PlayerPrefs.GetInt(HAS_CLEARED_TUTORIAL) == 1)
         {
             HideForever();
@@ -34,21 +28,21 @@ public class UpArrowTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HideWhenHeld();
+        Animate();
     }
 
-    private void HideWhenHeld()
+    private void Animate()
     {
-        for(int i = 0; i < m_TopCannon.m_KeysToPress.Count; i++)
+        if(m_TopCannon.IsCharging())
         {
-            if (Input.GetKeyDown(m_TopCannon.m_KeysToPress[i]))
-            {
-                Hide();
-            }
-            if (Input.GetKeyUp(m_TopCannon.m_KeysToPress[i]))
-            {
-                Display();
-            }
+            Hide();
+        } else
+        {
+            Display();
+        }
+        if(m_TopCannon.IsShotReady())
+        {
+            HideForever();
         }
     }
 

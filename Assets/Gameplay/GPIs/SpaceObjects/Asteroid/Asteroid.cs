@@ -34,7 +34,6 @@ public class Asteroid : SpaceObject
     {
         SpawnStardust();
         onAsteroidDestroyedAction(this);
-        Debug.Log("This asteroid was worth " + pointValue + " points!");
         base.Explode();
     }
 

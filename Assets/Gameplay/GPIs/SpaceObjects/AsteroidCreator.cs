@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AsteroidCreator : MonoBehaviour
 {
+    private static float SPAWN_X_OFFSET= -0.75f;
+
     public static float BASE_ASTEROID_COST = 20f;
     public Asteroid m_AsteroidPrefab;
 
@@ -82,6 +84,18 @@ public class AsteroidCreator : MonoBehaviour
                 asteroid.IncreasePointValue(m_PointAccountant.GetAltitudeCost());
             }
         }
-        asteroid.transform.position = new Vector3(0, altitude, 0);
+        asteroid.transform.position = new Vector3(RandomizeAsteroidSpawnX(), altitude, 0);
+    }
+
+    private float RandomizeAsteroidSpawnX()
+    {
+        float spawnX = 0f;
+        spawnX = Random.Range(0, SPAWN_X_OFFSET);
+        if(Random.Range(0, 2) == 1)
+        {
+            spawnX = spawnX * -1;
+        }
+        Debug.Log(spawnX);
+        return spawnX;
     }
 }

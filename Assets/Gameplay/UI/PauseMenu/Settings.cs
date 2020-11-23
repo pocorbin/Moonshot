@@ -77,9 +77,7 @@ public class Settings : MonoBehaviour
 
     private void EraseSettings()
     {
-        PlayerPrefs.DeleteKey(SHOW_VISUAL_KEYBOARD);
-        PlayerPrefs.DeleteKey(STARDUST_COUNT);
-        PlayerPrefs.DeleteKey(Pellet.PIERCING_MISSILES_UPGRADE_KEY);
+        PlayerPrefs.DeleteAll();
 
         m_StardustCounter.EraseAllStardust();
         SetActiveVirtualKeyboard(1);

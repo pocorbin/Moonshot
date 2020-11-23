@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class Canon : MonoBehaviour
 
     protected RandomSFXAssigner sfxAssigner;
     protected AudioSource audioSource;
+
+    protected Action mShootCallback;
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -62,5 +65,11 @@ public class Canon : MonoBehaviour
         m_MuzzleFlash.Play();
         sfxAssigner.AssignSFX();
         audioSource.Play();
+        mShootCallback?.Invoke();
+    }
+
+    public void SetShootCallback(Action pCallback)
+    {
+        mShootCallback += pCallback;
     }
 }

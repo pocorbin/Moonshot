@@ -50,9 +50,12 @@ public class ChargingCanon : Canon
 
     protected override void CheckShoot()
     {
-        if (Input.GetKeyDown(m_KeyToPress))
+        for (int i = 0; i < m_KeysToPress.Count; i++)
         {
-            KeyDown();
+            if (Input.GetKeyDown(m_KeysToPress[i]))
+            {
+                KeyDown();
+            }
         }
     }
 
@@ -60,9 +63,13 @@ public class ChargingCanon : Canon
     {
         if(hasStartedCharging)
         {
-            if(Input.GetKeyUp(m_KeyToPress))
+
+            for (int i = 0; i < m_KeysToPress.Count; i++)
             {
-                KeyUp();
+                if (Input.GetKeyUp(m_KeysToPress[i]))
+                {
+                    KeyUp();
+                }
             }
         }
     }

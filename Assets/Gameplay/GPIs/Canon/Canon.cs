@@ -6,7 +6,7 @@ public class Canon : MonoBehaviour
 {
     protected float missileSpeed = 10f;
 
-    public KeyCode m_KeyToPress;
+    public List<KeyCode> m_KeysToPress = new List<KeyCode>();
 
     public Pellet m_PelletPrefab;
 
@@ -33,9 +33,12 @@ public class Canon : MonoBehaviour
 
     protected virtual void CheckShoot()
     {
-        if (Input.GetKeyDown(m_KeyToPress))
+        for(int i = 0; i <m_KeysToPress.Count; i++)
         {
-            Shoot();
+            if (Input.GetKeyDown(m_KeysToPress[i]))
+            {
+                Shoot();
+            }
         }
     }
 

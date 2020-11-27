@@ -16,5 +16,5 @@ MonoBehaviour:
   upgradeName: Planetary Shield
   upgradeKey: Shield
   description: Each upgrade protects the earth from one asteroid before it is destroyed.
-  baseCost: 5
+  baseCost: 200
   incrementRate: 100

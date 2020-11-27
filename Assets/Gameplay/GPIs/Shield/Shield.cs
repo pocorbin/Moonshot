@@ -46,8 +46,8 @@ public class Shield : MonoBehaviour
             health = maxHealth;
             m_ShieldIdleEffect.gameObject.SetActive(true);
             m_ShieldIdleEffect.Play();
-            m_ShieldCounter.Initialize();
         }
+        m_ShieldCounter.Initialize();
     }
 
     public int GetHealth()

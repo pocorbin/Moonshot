@@ -40,6 +40,7 @@ public class ShieldCounter : MonoBehaviour
     private void Hide()
     {
         m_Background.enabled = false;
+        RemoveAllChargeVisuals();
     }
 
     private void Display()
@@ -67,11 +68,14 @@ public class ShieldCounter : MonoBehaviour
             {
                 Instantiate(m_ShieldChargeIcon, m_ChargeContainer.transform);
             }
-        } else
+        } else if (currentCharges >0)
         {
             m_TextCharges.text = "x" + currentCharges.ToString();
             m_TextCharges.enabled = true;
             //TODO write charges textually
+        } else
+        {
+            Hide();
         }
     }
 

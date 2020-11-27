@@ -19,11 +19,14 @@ public class Earth : MonoBehaviour
 
     private Animator mAnimator;
 
+    public Shield mShield;
+
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
         mAnimator = GetComponent<Animator>();
+        mShield.Initialize();
     }
 
     // Update is called once per frame
@@ -34,12 +37,18 @@ public class Earth : MonoBehaviour
 
     public void ReceiveDamage()
     {
-        health--;
-        if(health <= 0 && !isDestroyed)
+        if(mShield.GetHealth()>=1)
         {
-            isDestroyed = true;
-            OnDestroyed();
-            mAnimator.SetTrigger(DESTROY_TRIGGER);
+            mShield.ReceiveDamage();
+        } else
+        {
+            health--;
+            if (health <= 0 && !isDestroyed)
+            {
+                isDestroyed = true;
+                OnDestroyed();
+                mAnimator.SetTrigger(DESTROY_TRIGGER);
+            }
         }
     }
 
@@ -58,6 +67,7 @@ public class Earth : MonoBehaviour
         isDestroyed = false;
         health = maxHealth;
         mAnimator.SetTrigger(SPAWN_TRIGGER);
+        mShield.Initialize();
     }
 
     public bool IsDestroyed()

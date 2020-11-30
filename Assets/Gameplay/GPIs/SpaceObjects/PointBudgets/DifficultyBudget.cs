@@ -11,6 +11,7 @@ public class DifficultyBudget : ScriptableObject
     public float maxIncrementationPerLevel = 0f;
     public float cost = 1f;
     public float incrementRate = 1f;
+    public float absoluteMaximum = 0;
 
     public float GetMinValue(int currentLevel)
     {
@@ -19,6 +20,6 @@ public class DifficultyBudget : ScriptableObject
 
     public float GetMaxValue(int currentLevel)
     {
-        return baseMax + (maxIncrementationPerLevel * currentLevel);
+        return Mathf.Min(baseMax + (maxIncrementationPerLevel * currentLevel),absoluteMaximum);
     }
 }

@@ -16,6 +16,7 @@ public class Pellet : MonoBehaviour
     private int mNumberOfPiercesLeft = 0;
 
     private Collider mCollider;
+    private bool mHasHitOnce = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +48,7 @@ public class Pellet : MonoBehaviour
             else
             {
                 mNumberOfPiercesLeft--;
+                mHasHitOnce = true;
             }
         }
         else if (other.gameObject.tag == Moon.MOON_TAG)
@@ -72,7 +74,10 @@ public class Pellet : MonoBehaviour
     {
         if (Vector2.Distance(this.transform.position, Vector2.zero) > DISTANCE_TO_DESTROY)
         {
-            missCallback();
+            if(!mHasHitOnce)
+            {
+                missCallback();
+            }
             Destroy(this.gameObject);
         }
     }

@@ -18,3 +18,4 @@ MonoBehaviour:
   maxIncrementationPerLevel: 0.2
   cost: 5
   incrementRate: 0.5
+  absoluteMaximum: 5

@@ -17,4 +17,4 @@ MonoBehaviour:
   upgradeKey: Shield
   description: Each upgrade protects the earth from one asteroid before it is destroyed.
   baseCost: 200
-  incrementRate: 100
+  incrementRate: 500
